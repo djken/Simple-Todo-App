@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAdd;
     EditText edItem;
     RecyclerView rvItems;
+    ItemsAdapter itemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,20 @@ public class MainActivity extends AppCompatActivity {
         items.add("Working on Java Programming");
         items.add("Rehearsal with the Worship Team");
 
-        final ItemsAdapter itemsAdapter = new ItemsAdapter(items);
+        ItemsAdapter.OnLongClickListener onLongClickListener = new ItemsAdapter.OnLongClickListener(){
+            @Override
+            public void onItemLongClicked(int position) {
+                // Delete the item at the model
+                items.remove(position);
+
+                // Notify the adapter at which position the item is deleted
+                itemsAdapter.notifyItemRemoved(position);
+                Toast.makeText(getApplicationContext(), "Item was removed", Toast.LENGTH_SHORT).show();
+
+            }
+        };
+
+        itemsAdapter = new ItemsAdapter(items, onLongClickListener);
         rvItems.setAdapter(itemsAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
 
@@ -53,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 // Notify the adapter that an item is inserted
                 itemsAdapter.notifyItemInserted(items.size() - 1);
                 edItem.setText("");
-
+                Toast.makeText(getApplicationContext(), "Item was added", Toast.LENGTH_SHORT).show();
             }
         });
 
