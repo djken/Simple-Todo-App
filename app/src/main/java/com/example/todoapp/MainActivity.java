@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -37,9 +38,24 @@ public class MainActivity extends AppCompatActivity {
         items.add("Working on Java Programming");
         items.add("Rehearsal with the Worship Team");
 
-        ItemsAdapter itemsAdapter = new ItemsAdapter(items);
+        final ItemsAdapter itemsAdapter = new ItemsAdapter(items);
         rvItems.setAdapter(itemsAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
+
+        //Add logic behind the Add button
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String totoItem = edItem.getText().toString();
+                // Add the item to the model
+                items.add(totoItem);
+
+                // Notify the adapter that an item is inserted
+                itemsAdapter.notifyItemInserted(items.size() - 1);
+                edItem.setText("");
+
+            }
+        });
 
     }
 }
