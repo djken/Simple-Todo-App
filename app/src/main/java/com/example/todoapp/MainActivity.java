@@ -2,6 +2,7 @@ package com.example.todoapp;
 
 //import androidx.appcompat.app.AlertController;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -30,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
         edItem = findViewById(R.id.edItem);
         rvItems = findViewById(R.id.rvItems);
 
-        edItem.setText("I am doing Android");
-
         items = new ArrayList<>(); //Instantiate the model
         //add some data
         items.add("Reading The Bible");
         items.add("Working on Java Programming");
         items.add("Rehearsal with the Worship Team");
+
+        ItemsAdapter itemsAdapter = new ItemsAdapter(items);
+        rvItems.setAdapter(itemsAdapter);
+        rvItems.setLayoutManager(new LinearLayoutManager(this));
 
     }
 }
