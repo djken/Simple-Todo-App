@@ -20,7 +20,7 @@
         android:text="Add" />
 
     <EditText
-        android:id="@+id/edItems"
+        android:id="@+id/edItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -32,13 +32,14 @@
         android:layout_toStartOf="@+id/btnAdd"
         android:layout_toLeftOf="@+id/btnAdd"
         android:ems="10"
-        android:hint="Add an item here!" />
+        android:hint="Add an item here!"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/edItems"
+        android:layout_above="@+id/edItem"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
