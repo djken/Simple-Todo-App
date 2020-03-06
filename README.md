@@ -26,7 +26,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Imgur](https://imgur.com/arRkZSh)
+![Todo App Walkthrough](https://i.imgur.com/KtftJ1S.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
